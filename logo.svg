@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- Background (transparent) -->
+  <rect width="600" height="600" fill="none"/>
+
+  <!-- Bold red shield-style block -->
+  <path d="M80 60 L520 60 Q560 60 560 100 L560 460 Q560 500 520 540 L300 540 L80 540 Q40 540 40 500 L40 100 Q40 60 80 60 Z"
+        fill="#dc2626"/>
+
+  <!-- Diagonal speed slash (white) -->
+  <polygon points="380,60 560,60 560,180 260,540 80,540 80,420" fill="#ffffff" opacity="0.10"/>
+
+  <!-- Letter G (white, bold, geometric) -->
+  <path d="M180 180
+           L420 180
+           L420 250
+           L260 250
+           L260 350
+           L360 350
+           L360 320
+           L300 320
+           L300 270
+           L420 270
+           L420 420
+           L180 420
+           Z"
+        fill="#ffffff"/>
+
+  <!-- Diagonal red hauler stripe through G -->
+  <polygon points="180,400 420,180 420,220 180,440" fill="#dc2626"/>
+
+  <!-- Bottom wordmark -->
+  <text x="300" y="510" text-anchor="middle"
+        font-family="Arial Black, Impact, sans-serif"
+        font-size="60" font-weight="900" fill="#ffffff"
+        letter-spacing="4">GLAVA HAUL</text>
+</svg>
