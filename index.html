@@ -476,23 +476,26 @@
     <h2>Ready to Build Something With Us?</h2>
     <p>Fill out the application below and our team will be in touch within 24-48 hours.</p>
   </div>
-  <form class="apply-wrap reveal" onsubmit="event.preventDefault();alert('Thanks! Your application has been received. We\'ll be in touch within 24-48 hours.');this.reset();">
+  <form id="applyForm" class="apply-wrap reveal">
+    <input type="hidden" name="_subject" value="New Driver Application — Glava Haul" />
+    <input type="hidden" name="_template" value="table" />
+    <input type="text" name="_honey" style="display:none" />
     <div class="form-row">
-      <div class="field"><label>First Name *</label><input type="text" required></div>
-      <div class="field"><label>Last Name *</label><input type="text" required></div>
+      <div class="field"><label>First Name *</label><input type="text" name="First Name" required></div>
+      <div class="field"><label>Last Name *</label><input type="text" name="Last Name" required></div>
     </div>
     <div class="form-row">
-      <div class="field"><label>Email *</label><input type="email" required></div>
-      <div class="field"><label>Phone *</label><input type="tel" required></div>
+      <div class="field"><label>Email *</label><input type="email" name="Email" required></div>
+      <div class="field"><label>Phone *</label><input type="tel" name="Phone" required></div>
     </div>
     <div class="form-row">
-      <div class="field"><label>City</label><input type="text"></div>
-      <div class="field"><label>State</label><input type="text"></div>
+      <div class="field"><label>City</label><input type="text" name="City"></div>
+      <div class="field"><label>State</label><input type="text" name="State"></div>
     </div>
     <div class="form-row">
       <div class="field">
         <label>Position of Interest *</label>
-        <select required>
+        <select name="Position of Interest" required>
           <option value="">Select...</option>
           <option>Non-CDL Pickup</option>
           <option>CDL Pickup</option>
@@ -502,7 +505,7 @@
       </div>
       <div class="field">
         <label>Years of Driving Experience</label>
-        <select>
+        <select name="Years of Experience">
           <option>None</option>
           <option>Less than 1 year</option>
           <option>1-3 years</option>
@@ -513,9 +516,10 @@
     </div>
     <div class="field">
       <label>Tell us about yourself</label>
-      <textarea placeholder="Brief background, why car hauling, what you're looking for..."></textarea>
+      <textarea name="About" placeholder="Brief background, why car hauling, what you're looking for..."></textarea>
     </div>
     <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">Submit Application <span class="btn-arrow">→</span></button>
+    <p id="formMsg" style="display:none;margin-top:18px;text-align:center;font-weight:600;color:var(--red)"></p>
   </form>
 </section>
 
@@ -588,6 +592,33 @@
   window.addEventListener('scroll',()=>{
     if(window.scrollY > 20) header.style.boxShadow = '0 4px 20px rgba(0,0,0,.3)';
     else header.style.boxShadow = 'none';
+  });
+
+  // Application form -> FormSubmit (AJAX, stays on page)
+  const applyForm = document.getElementById('applyForm');
+  const formMsg = document.getElementById('formMsg');
+  applyForm.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const btn = applyForm.querySelector('button[type=submit]');
+    const original = btn.innerHTML;
+    btn.disabled = true; btn.innerHTML = 'Sending...';
+    try{
+      const res = await fetch('https://formsubmit.co/ajax/careers@glavahaul.com', {
+        method:'POST',
+        headers:{ 'Accept':'application/json' },
+        body: new FormData(applyForm)
+      });
+      if(res.ok){
+        applyForm.reset();
+        formMsg.style.color = 'var(--red)';
+        formMsg.textContent = 'Thank you! Your application has been received. Our team will be in touch within 24-48 hours.';
+      } else { throw new Error(); }
+    } catch(err){
+      formMsg.style.color = '#b91c1c';
+      formMsg.textContent = 'Something went wrong. Please call us at +1 (864) 606-2439 or email careers@glavahaul.com.';
+    }
+    formMsg.style.display = 'block';
+    btn.disabled = false; btn.innerHTML = original;
   });
 </script>
 
