@@ -78,10 +78,23 @@
   @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
 
   /* --- TRUST STRIP --- */
-  .trust{background:var(--black);color:#fff;padding:36px 24px;border-top:1px solid rgba(255,255,255,.06)}
+  .trust{background:linear-gradient(rgba(10,10,10,.93),rgba(10,10,10,.93)),url('freeway.shot.webp') center/cover;color:#fff;padding:46px 24px;border-top:1px solid rgba(255,255,255,.06)}
   .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:1200px;margin:0 auto;text-align:center}
   .trust-item .num{font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--red);margin-bottom:4px}
   .trust-item .label{font-size:12px;color:var(--grey-400);text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
+
+  /* --- GALLERY --- */
+  .gallery{background:#fff}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1200px;margin:0 auto}
+  .gallery-item{position:relative;border-radius:14px;overflow:hidden;height:300px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+  .gallery-item:hover img{transform:scale(1.08)}
+  .gallery-item .cap{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(transparent,rgba(10,10,10,.85));color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px}
+
+  /* --- MOTION BAND --- */
+  .motion-band{position:relative;min-height:340px;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding:80px 24px;background:linear-gradient(rgba(10,10,10,.6),rgba(10,10,10,.7)),url('freeway2.shot.webp') center/cover fixed}
+  .motion-band h2{color:#fff;max-width:780px}
+  .motion-band p{color:#e5e7eb;font-size:18px;max-width:620px;margin:0 auto}
 
   /* --- SECTION --- */
   section{padding:100px 24px;position:relative}
@@ -133,14 +146,14 @@
   .owner-list{list-style:none;margin:24px 0 30px}
   .owner-list li{padding:10px 0;color:#e5e7eb;display:flex;gap:12px;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.06)}
   .owner-list li::before{content:"→";color:var(--red);font-weight:900;flex-shrink:0;font-size:18px}
-  .owner-visual{height:440px;border-radius:18px;background:linear-gradient(rgba(10,10,10,.35),rgba(220,38,38,.15)),url('https://images.unsplash.com/photo-1586366090456-1a23636af5f9?auto=format&fit=crop&w=1200&q=80') center/cover;box-shadow:0 30px 60px rgba(0,0,0,.4);position:relative;overflow:hidden}
+  .owner-visual{height:440px;border-radius:18px;background:linear-gradient(rgba(10,10,10,.3),rgba(220,38,38,.18)),url('semicarhauler.webp') center/cover;box-shadow:0 30px 60px rgba(0,0,0,.4);position:relative;overflow:hidden}
   .owner-visual::after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.1);border-radius:18px}
 
   /* --- ABOUT --- */
   .about{background:#fff}
   .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;max-width:1100px;margin:0 auto}
   .about p{color:var(--grey-600);font-size:16.5px;margin-bottom:18px;line-height:1.75}
-  .about-img{border-radius:18px;overflow:hidden;height:460px;background:url('truck.jpg') center/cover;box-shadow:0 25px 50px rgba(0,0,0,.12)}
+  .about-img{border-radius:18px;overflow:hidden;height:460px;background:url('signing_notes.webp') center/cover;box-shadow:0 25px 50px rgba(0,0,0,.12)}
 
   /* --- STEPS --- */
   .steps{background:var(--grey-100)}
@@ -205,6 +218,10 @@
     .menu-toggle{display:block}
     .trust-grid{grid-template-columns:repeat(2,1fr);gap:24px}
     .paths-grid,.why-grid,.steps-grid,.about-grid,.owner-grid,.footer-grid{grid-template-columns:1fr}
+    .gallery-grid{grid-template-columns:1fr}
+    .gallery-item{height:240px}
+    .motion-band{background-attachment:scroll}
+    .trust{background-attachment:scroll}
     .about-img,.owner-visual{height:300px}
     .form-row{grid-template-columns:1fr}
     .apply-wrap{padding:30px}
@@ -358,6 +375,29 @@
   </div>
 </section>
 
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="section-head reveal">
+    <div class="eyebrow">On The Road</div>
+    <h2>Built For The Haul</h2>
+    <p>Real equipment, real routes, real work. This is what hauling with Glava looks like — from the lot to the highway.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal">
+      <img src="carhauler.highway.webp" alt="Loaded car hauler on the highway" loading="lazy" />
+      <div class="cap">Nationwide highway routes</div>
+    </div>
+    <div class="gallery-item reveal delay-1">
+      <img src="carhauler.truckstop.webp" alt="Car haulers loaded with vehicles" loading="lazy" />
+      <div class="cap">Multi-vehicle hauling</div>
+    </div>
+    <div class="gallery-item reveal delay-2">
+      <img src="hotshot.trailer.webp" alt="Gooseneck hotshot trailers" loading="lazy" />
+      <div class="cap">Hotshot &amp; gooseneck setups</div>
+    </div>
+  </div>
+</section>
+
 <!-- OWNER OPERATOR -->
 <section class="owner" id="owner">
   <div class="owner-grid">
@@ -374,6 +414,14 @@
       <a href="#apply" class="btn btn-primary btn-lg">Start Your Journey <span class="btn-arrow">→</span></a>
     </div>
     <div class="owner-visual reveal delay-1"></div>
+  </div>
+</section>
+
+<!-- MOTION BAND -->
+<section class="motion-band">
+  <div class="reveal">
+    <h2>Always Moving. Always Hauling.</h2>
+    <p>Coast to coast, around the clock — Glava keeps freight and vehicles in motion.</p>
   </div>
 </section>
 
