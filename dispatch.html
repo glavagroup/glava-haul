@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Glava Haul Dispatch | Premium Car Haul Dispatch Services for 3–9 Car Haulers</title>
+<meta name="description" content="Premium car haul dispatch services for owner-operators running 3–9 car haulers. 24/7 dispatch, load booking, rate negotiation, and long-term support. Apply today." />
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="apple-touch-icon" href="favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#dc2626;--red-dark:#b91c1c;--red-light:#ef4444;
+    --black:#0a0a0a;--grey-950:#0f0f12;--grey-900:#111827;--grey-700:#374151;
+    --grey-600:#4b5563;--grey-400:#9ca3af;--grey-200:#e5e7eb;--grey-100:#f3f4f6;--grey-50:#fafafa;--white:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;color:var(--grey-900);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+  .reveal.visible{opacity:1;transform:none}
+  .reveal.delay-1{transition-delay:.1s}.reveal.delay-2{transition-delay:.2s}.reveal.delay-3{transition-delay:.3s}
+
+  /* NAV */
+  header{position:sticky;top:0;background:rgba(10,10,10,.9);backdrop-filter:blur(14px);z-index:100;border-bottom:1px solid rgba(255,255,255,.06);transition:background .3s}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1280px;margin:0 auto}
+  .logo{display:flex;align-items:center;gap:10px}
+  .logo-img{height:32px;width:auto;display:block}
+  footer .logo-img{height:42px}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{color:#e5e7eb;font-weight:500;font-size:15px;transition:color .2s;position:relative}
+  .nav-links a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:center;transition:transform .25s}
+  .nav-links a:not(.btn):hover{color:#fff}
+  .nav-links a:not(.btn):hover::after{transform:scaleX(1)}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:8px;font-weight:700;font-size:15px;transition:all .25s cubic-bezier(.16,1,.3,1);cursor:pointer;border:none;font-family:inherit}
+  .btn-primary{background:var(--red);color:#fff;box-shadow:0 4px 14px rgba(220,38,38,.35)}
+  .btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 8px 22px rgba(220,38,38,.5)}
+  .btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4)}
+  .btn-outline:hover{background:#fff;color:var(--black);border-color:#fff}
+  .btn-lg{padding:16px 32px;font-size:16px}
+  .btn-arrow{transition:transform .25s}
+  .btn:hover .btn-arrow{transform:translateX(4px)}
+  .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer}
+
+  /* HERO */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding:120px 24px 100px;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.88),rgba(10,10,10,.66) 50%,rgba(220,38,38,.4)),url('carhauler.highway.webp') center/cover;z-index:-2}
+  .hero-inner{max-width:900px;animation:heroIn 1.2s cubic-bezier(.16,1,.3,1) both}
+  @keyframes heroIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  .tagline{display:inline-block;background:rgba(220,38,38,.15);border:1px solid var(--red);color:#fca5a5;padding:6px 16px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:2.5px;margin-bottom:24px;text-transform:uppercase}
+  .hero h1{font-size:clamp(34px,5.5vw,62px);font-weight:900;line-height:1.06;margin-bottom:22px;letter-spacing:-1.2px}
+  .hero h1 .accent{background:linear-gradient(120deg,var(--red),var(--red-light));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{font-size:clamp(16px,2vw,20px);max-width:720px;margin:0 auto 40px;color:#d1d5db}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  section{padding:100px 24px;position:relative}
+  .section-head{text-align:center;max-width:760px;margin:0 auto 60px}
+  .eyebrow{display:inline-block;color:var(--red);font-weight:800;font-size:12px;letter-spacing:3.5px;text-transform:uppercase;margin-bottom:14px;padding:4px 12px;background:rgba(220,38,38,.08);border-radius:6px}
+  h2{font-size:clamp(28px,4vw,44px);font-weight:900;line-height:1.15;margin-bottom:18px;letter-spacing:-.8px}
+  .section-head p{font-size:17px;color:var(--grey-600);line-height:1.7}
+  .lead{font-size:17px;color:var(--grey-600);line-height:1.75;max-width:820px;margin:0 auto 30px;text-align:center}
+
+  /* SECTION 1 — WHO */
+  .who{background:var(--grey-50)}
+  .who-list{max-width:760px;margin:0 auto;display:grid;gap:14px}
+  .who-item{background:#fff;border:1px solid var(--grey-200);border-radius:12px;padding:18px 22px;display:flex;gap:14px;align-items:flex-start;font-weight:500;color:var(--grey-900);transition:all .3s}
+  .who-item:hover{border-color:var(--red);transform:translateX(4px);box-shadow:0 8px 24px rgba(220,38,38,.08)}
+  .who-item .chk{width:26px;height:26px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;font-size:14px}
+
+  /* SECTION 2 — WHY (2 col) */
+  .why{background:linear-gradient(180deg,#fff,var(--grey-50))}
+  .why-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1100px;margin:0 auto}
+  .why-card{background:#fff;border-radius:16px;padding:38px 34px;box-shadow:0 10px 40px rgba(0,0,0,.05);border:1px solid var(--grey-200);position:relative;overflow:hidden}
+  .why-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--red)}
+  .why-card h3{font-size:20px;font-weight:900;margin-bottom:22px;display:flex;align-items:center;gap:12px}
+  .why-card h3 .ic{width:40px;height:40px;background:rgba(220,38,38,.1);color:var(--red);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
+  .why-card ul{list-style:none;display:grid;gap:14px}
+  .why-card li{padding-left:30px;position:relative;color:var(--grey-700);font-size:15.5px;line-height:1.55}
+  .why-card li::before{content:"✓";position:absolute;left:0;top:0;color:var(--red);font-weight:900;font-size:17px}
+
+  /* SECTION 3 — TIMELINE */
+  .process{background:var(--grey-950);color:#fff}
+  .process .eyebrow{background:rgba(220,38,38,.15);color:#fca5a5}
+  .process h2{color:#fff}
+  .process .section-head p{color:var(--grey-400)}
+  .timeline{max-width:900px;margin:0 auto;position:relative}
+  .timeline::before{content:"";position:absolute;left:31px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--red),rgba(220,38,38,.15))}
+  .tl-step{position:relative;padding:0 0 40px 84px;}
+  .tl-step:last-child{padding-bottom:0}
+  .tl-num{position:absolute;left:0;top:0;width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;box-shadow:0 8px 24px rgba(220,38,38,.4);z-index:1}
+  .tl-body{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:24px 26px;transition:all .3s}
+  .tl-body:hover{border-color:var(--red);background:rgba(255,255,255,.06);transform:translateY(-2px)}
+  .tl-body h3{font-size:19px;font-weight:800;margin-bottom:8px;color:#fff}
+  .tl-body p{color:var(--grey-400);font-size:15px;line-height:1.65}
+
+  /* SECTION 4 — FEATURES */
+  .features{background:#fff}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1150px;margin:0 auto}
+  .feat-card{background:var(--grey-50);border:1px solid var(--grey-200);border-radius:14px;padding:28px 26px;transition:all .35s cubic-bezier(.16,1,.3,1)}
+  .feat-card:hover{border-color:var(--red);transform:translateY(-5px);box-shadow:0 16px 36px rgba(220,38,38,.12);background:#fff}
+  .feat-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(220,38,38,.12),rgba(220,38,38,.04));color:var(--red);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px;border:1px solid rgba(220,38,38,.2)}
+  .feat-card h3{font-size:16.5px;font-weight:800;line-height:1.35}
+
+  /* SECTION 5 — WHO THRIVES */
+  .thrive{background:var(--grey-50)}
+  .thrive-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center;max-width:1100px;margin:0 auto}
+  .thrive-img{border-radius:18px;overflow:hidden;height:440px;background:url('signing_notes.webp') center/cover;box-shadow:0 25px 50px rgba(0,0,0,.14)}
+  .thrive ul{list-style:none;display:grid;gap:16px;margin-top:8px}
+  .thrive li{padding-left:34px;position:relative;color:var(--grey-800,#1f2937);font-size:16px;font-weight:500;line-height:1.5}
+  .thrive li::before{content:"✓";position:absolute;left:0;top:-1px;width:24px;height:24px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900}
+
+  /* SECTION 6 — CTA + FORM */
+  .cta-apply{background:linear-gradient(135deg,var(--grey-950),#1a0808);color:#fff}
+  .cta-apply .eyebrow{background:rgba(220,38,38,.15);color:#fca5a5}
+  .cta-apply h2{color:#fff}
+  .cta-apply .section-head p{color:var(--grey-400)}
+  .apply-wrap{max-width:720px;margin:0 auto;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:44px;border-radius:18px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{display:flex;flex-direction:column;margin-bottom:18px}
+  .field label{font-size:12px;font-weight:700;color:#e5e7eb;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+  .field input,.field select{padding:13px 14px;border:2px solid rgba(255,255,255,.12);border-radius:10px;font-size:15px;font-family:inherit;background:rgba(0,0,0,.25);color:#fff;transition:all .2s}
+  .field input::placeholder{color:#6b7280}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(220,38,38,.15)}
+  .field select option{background:#1a1a1a}
+  .contact-note{text-align:center;margin-top:22px;color:var(--grey-400);font-size:14.5px;max-width:560px;margin-left:auto;margin-right:auto}
+  .contact-note a{color:#fca5a5;font-weight:600}
+
+  /* FOOTER */
+  footer{background:var(--black);color:var(--grey-400);padding:70px 24px 30px}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto 40px}
+  .footer-brand p{margin-top:16px;font-size:14px;max-width:320px;line-height:1.7}
+  .footer-col h4{color:#fff;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:18px}
+  .footer-col a{display:block;color:var(--grey-400);font-size:14px;margin-bottom:10px;transition:color .2s}
+  .footer-col a:hover{color:var(--red)}
+  .social-link{display:inline-flex;align-items:center}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center;font-size:13px;max-width:1200px;margin:0 auto;color:var(--grey-600)}
+
+  @media (max-width:960px){
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--black);flex-direction:column;padding:24px;gap:18px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-links.open{display:flex}
+    .nav-links a{width:100%}
+    .menu-toggle{display:block}
+    .why-cols,.thrive-grid,.footer-grid{grid-template-columns:1fr}
+    .feat-grid{grid-template-columns:1fr 1fr}
+    .thrive-img{height:300px}
+    .form-row{grid-template-columns:1fr}
+    .apply-wrap{padding:28px}
+    .timeline::before{left:25px}
+    .tl-step{padding-left:70px}
+    .tl-num{width:52px;height:52px;font-size:19px}
+    section{padding:70px 20px}
+  }
+  @media (max-width:560px){ .feat-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="logo"><img src="logo-white.png" alt="Glava Haul" class="logo-img" /></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="#who">Who We Serve</a>
+      <a href="#process">Process</a>
+      <a href="#features">Features</a>
+      <a href="#apply" class="btn btn-primary">Apply for Dispatch <span class="btn-arrow">→</span></a>
+    </nav>
+    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="tagline">Glava Haul Dispatch</span>
+    <h1>Premium Car Haul Dispatch Services <span class="accent">for 3–9 Car Haulers</span></h1>
+    <p>Focus on driving and growing your business — Glava Haul Dispatch keeps your truck loaded, your schedule organized, and your operation running smoothly.</p>
+    <div class="hero-cta">
+      <a href="#apply" class="btn btn-primary btn-lg">Apply for Dispatch Services <span class="btn-arrow">→</span></a>
+      <a href="#process" class="btn btn-outline btn-lg">See How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1 — WHO WE WORK WITH -->
+<section class="who" id="who">
+  <div class="section-head reveal">
+    <div class="eyebrow">Who We Work With</div>
+    <h2>Built for Serious Car Haulers</h2>
+    <p>Glava Haul Dispatch is designed for drivers and owner-operators running 3–9 car haulers who want professional support and consistent, high-quality work. Whether you're just starting out or you already have a strong customer base, our dispatch service is built to make your day-to-day operation smoother and more profitable.</p>
+  </div>
+  <div class="who-list">
+    <div class="who-item reveal"><span class="chk">✓</span>CDL and Non-CDL drivers welcome</div>
+    <div class="who-item reveal"><span class="chk">✓</span>3–9 car hauler setups (wedge, stinger, multi-car)</div>
+    <div class="who-item reveal"><span class="chk">✓</span>Run under your own MC or our MC</div>
+    <div class="who-item reveal"><span class="chk">✓</span>Ideal for reliable, responsible, and motivated drivers and owner-operators</div>
+    <div class="who-item reveal"><span class="chk">✓</span>Long-term partnership mindset — not just one-and-done loads</div>
+  </div>
+</section>
+
+<!-- SECTION 2 — WHY CHOOSE -->
+<section class="why">
+  <div class="section-head reveal">
+    <div class="eyebrow">Why Glava Haul Dispatch</div>
+    <h2>Why Owner-Operators Choose Our Dispatch</h2>
+    <p>Owner-operators don't just need loads; they need a team that understands car hauling, respects their time, and helps them stay profitable. Glava Haul Dispatch offers a premium level of support so you can run your business with confidence.</p>
+  </div>
+  <div class="why-cols">
+    <div class="why-card reveal">
+      <h3><span class="ic">$</span>Operational &amp; Financial</h3>
+      <ul>
+        <li>Dedicated 24/7 dispatch team focused on car hauling</li>
+        <li>We find and book loads that match your preferred lanes and schedule</li>
+        <li>Rate negotiation aimed at maximizing your revenue per day</li>
+        <li>Help reducing deadhead miles with smarter route planning</li>
+        <li>Fuel cards available to help reduce operating costs</li>
+      </ul>
+    </div>
+    <div class="why-card reveal delay-1">
+      <h3><span class="ic">★</span>Support &amp; Quality of Life</h3>
+      <ul>
+        <li>Clear communication on load details, timing, and expectations</li>
+        <li>Help routing you toward home regularly when the freight allows</li>
+        <li>Basic support with paperwork (rate confirmations, BOLs, PODs)</li>
+        <li>Long-term, relationship-based approach — we grow with you</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 — PROCESS TIMELINE -->
+<section class="process" id="process">
+  <div class="section-head reveal">
+    <div class="eyebrow">The Process</div>
+    <h2>How Our Dispatch Process Works</h2>
+    <p>We keep the process simple and transparent so you always know what to expect and stay in control of your business.</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-step reveal">
+      <div class="tl-num">1</div>
+      <div class="tl-body">
+        <h3>Sign Up &amp; Share Your Preferences</h3>
+        <p>You fill out a short onboarding form or speak with our team to tell us about your home base, preferred lanes or regions, weekly mileage or revenue targets, and any specific requirements (daytime driving, weekends off, etc.).</p>
+      </div>
+    </div>
+    <div class="tl-step reveal">
+      <div class="tl-num">2</div>
+      <div class="tl-body">
+        <h3>We Analyze and Plan Your Ideal Lanes</h3>
+        <p>Our dispatch team reviews your preferences and builds a lane strategy that fits your goals. We focus on profitable routes and realistic schedules that match your truck and your lifestyle.</p>
+      </div>
+    </div>
+    <div class="tl-step reveal">
+      <div class="tl-num">3</div>
+      <div class="tl-body">
+        <h3>We Start Finding and Booking Loads</h3>
+        <p>Once you're set up, our 24/7 dispatch team begins securing loads for your 3–9 car hauler. We target solid, reliable freight and work to keep your schedule as full and efficient as possible.</p>
+      </div>
+    </div>
+    <div class="tl-step reveal">
+      <div class="tl-num">4</div>
+      <div class="tl-body">
+        <h3>You Receive Clear Load Offers</h3>
+        <p>For each load, you see the rate, pickup and delivery details, vehicle count, schedule, and any special requirements. You review and accept the loads that fit your plan — no confusion, no surprises.</p>
+      </div>
+    </div>
+    <div class="tl-step reveal">
+      <div class="tl-num">5</div>
+      <div class="tl-body">
+        <h3>We Handle Logistics, You Focus on Driving</h3>
+        <p>Our team takes care of booking, rate negotiation, communication with brokers/dealers, and sending all documentation. You focus on safe loading, on-time deliveries, and running your business.</p>
+      </div>
+    </div>
+    <div class="tl-step reveal">
+      <div class="tl-num">6</div>
+      <div class="tl-body">
+        <h3>Ongoing Support &amp; Long-Term Growth</h3>
+        <p>We stay in touch, adjust your lanes as needed, and work with you for the long term. Our goal is not just to keep you moving today, but to help your operation grow steadily over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 — FEATURES -->
+<section class="features" id="features">
+  <div class="section-head reveal">
+    <div class="eyebrow">At a Glance</div>
+    <h2>Dispatch Features at a Glance</h2>
+    <p>Everything you get with a premium car haul dispatch team behind your operation.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card reveal"><div class="feat-icon">🕑</div><h3>24/7 dedicated car haul dispatch team</h3></div>
+    <div class="feat-card reveal"><div class="feat-icon">📄</div><h3>Work under your MC or Glava Haul's MC</h3></div>
+    <div class="feat-card reveal"><div class="feat-icon">🪪</div><h3>CDL &amp; Non-CDL drivers welcome</h3></div>
+    <div class="feat-card reveal"><div class="feat-icon">🚛</div><h3>3–9 car hauler specialization</h3></div>
+    <div class="feat-card reveal"><div class="feat-icon">⚙️</div><h3>Customized terms for each driver &amp; owner-operator</h3></div>
+    <div class="feat-card reveal"><div class="feat-icon">⛽</div><h3>Fuel cards available</h3></div>
+    <div class="feat-card reveal"><div class="feat-icon">🗺️</div><h3>Route planning to reduce deadhead miles</h3></div>
+    <div class="feat-card reveal"><div class="feat-icon">💲</div><h3>Clear load details and transparent rates</h3></div>
+    <div class="feat-card reveal"><div class="feat-icon">📈</div><h3>Long-term opportunities with full company support</h3></div>
+  </div>
+</section>
+
+<!-- SECTION 5 — WHO THRIVES -->
+<section class="thrive">
+  <div class="thrive-grid">
+    <div class="thrive-img reveal"></div>
+    <div class="reveal delay-1">
+      <div class="eyebrow">Who Thrives</div>
+      <h2>Who Thrives with Glava Haul Dispatch</h2>
+      <p class="lead" style="text-align:left;margin:0 0 20px">Our dispatch service is most effective for drivers and owner-operators who treat car hauling like a professional business. We're looking for people who want a serious, long-term partnership.</p>
+      <ul>
+        <li>Reliable and punctual with pickup and delivery times</li>
+        <li>Careful with vehicle loading and securement</li>
+        <li>Communicative and responsive with dispatch</li>
+        <li>Motivated to grow their revenue and business</li>
+        <li>Respectful, professional, and safety-focused</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6 — CTA + FORM -->
+<section class="cta-apply" id="apply">
+  <div class="section-head reveal">
+    <div class="eyebrow">Apply Now</div>
+    <h2>Ready to Add Professional Dispatch to Your Operation?</h2>
+    <p>If you're an owner-operator or driver with a 3–9 car hauler and you want a premium-level dispatch team behind you, Glava Haul Dispatch is ready to help. We'll treat your truck like it's part of our own fleet and work to keep you moving, profitable, and supported.</p>
+  </div>
+  <form id="dispatchForm" class="apply-wrap reveal">
+    <input type="hidden" name="_subject" value="New Dispatch Application — Glava Haul" />
+    <input type="hidden" name="_template" value="table" />
+    <input type="text" name="_honey" style="display:none" />
+    <div class="form-row">
+      <div class="field"><label>First Name *</label><input type="text" name="First Name" required></div>
+      <div class="field"><label>Last Name *</label><input type="text" name="Last Name" required></div>
+    </div>
+    <div class="form-row">
+      <div class="field"><label>Email *</label><input type="email" name="Email" required></div>
+      <div class="field"><label>Phone *</label><input type="tel" name="Phone" required></div>
+    </div>
+    <div class="form-row">
+      <div class="field">
+        <label>Vehicle Type *</label>
+        <select name="Vehicle Type" required>
+          <option value="">Select...</option>
+          <option>Wedge</option>
+          <option>Stinger</option>
+          <option>Multi-car hauler</option>
+          <option>Pickup &amp; trailer</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field"><label>Trailer Length</label><input type="text" name="Trailer Length" placeholder="e.g. 30 ft, 3-car, 7-car..."></div>
+    </div>
+    <div class="form-row">
+      <div class="field">
+        <label>License Type *</label>
+        <select name="License Type" required>
+          <option value="">Select...</option>
+          <option>CDL</option>
+          <option>Non-CDL</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Run Under</label>
+        <select name="MC Preference">
+          <option>My own MC</option>
+          <option>Glava Haul's MC</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">Apply for Dispatch Services <span class="btn-arrow">→</span></button>
+    <p id="formMsg" style="display:none;margin-top:18px;text-align:center;font-weight:600;color:#fca5a5"></p>
+    <p class="contact-note">Have questions before you apply? <a href="mailto:careers@glavahaul.com">Contact our dispatch team</a> for more information about how we work with drivers and owner-operators.</p>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo"><img src="logo-white.png" alt="Glava Haul" class="logo-img" /></a>
+      <p>Premium car haul dispatch and driving opportunities for CDL and non-CDL drivers. Haul with the best.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="index.html">Careers</a>
+      <a href="dispatch.html">Dispatch</a>
+      <a href="index.html#faq">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+18646062439">+1 (864) 606-2439</a>
+      <a href="mailto:careers@glavahaul.com">careers@glavahaul.com</a>
+    </div>
+    <div class="footer-col">
+      <h4>Follow</h4>
+      <a href="https://www.instagram.com/glavahaul" target="_blank" rel="noopener" class="social-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:8px">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>@glavahaul
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Glava Haul. All rights reserved. · Haul With The Best.
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  const header = document.querySelector('header');
+  window.addEventListener('scroll',()=>{
+    header.style.boxShadow = window.scrollY > 20 ? '0 4px 20px rgba(0,0,0,.3)' : 'none';
+  });
+
+  const dForm = document.getElementById('dispatchForm');
+  const formMsg = document.getElementById('formMsg');
+  dForm.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const btn = dForm.querySelector('button[type=submit]');
+    const original = btn.innerHTML;
+    btn.disabled = true; btn.innerHTML = 'Sending...';
+    try{
+      const res = await fetch('https://formsubmit.co/ajax/careers@glavahaul.com', {
+        method:'POST', headers:{ 'Accept':'application/json' }, body:new FormData(dForm)
+      });
+      if(res.ok){
+        dForm.reset();
+        formMsg.style.color = '#4ade80';
+        formMsg.textContent = 'Thank you! Your dispatch application has been received. Our team will be in touch shortly.';
+      } else { throw new Error(); }
+    } catch(err){
+      formMsg.style.color = '#fca5a5';
+      formMsg.textContent = 'Something went wrong. Please call +1 (864) 606-2439 or email careers@glavahaul.com.';
+    }
+    formMsg.style.display = 'block';
+    btn.disabled = false; btn.innerHTML = original;
+  });
+</script>
+
+</body>
+</html>
