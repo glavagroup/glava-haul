@@ -123,9 +123,10 @@
   .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .field{display:flex;flex-direction:column;margin-bottom:18px}
   .field label{font-size:12px;font-weight:700;color:#e5e7eb;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
-  .field input,.field select{padding:13px 14px;border:2px solid rgba(255,255,255,.12);border-radius:10px;font-size:15px;font-family:inherit;background:rgba(0,0,0,.25);color:#fff;transition:all .2s}
-  .field input::placeholder{color:#6b7280}
-  .field input:focus,.field select:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(220,38,38,.15)}
+  .field input,.field select,.field textarea{padding:13px 14px;border:2px solid rgba(255,255,255,.12);border-radius:10px;font-size:15px;font-family:inherit;background:rgba(0,0,0,.25);color:#fff;transition:all .2s}
+  .field input::placeholder,.field textarea::placeholder{color:#6b7280}
+  .field textarea{resize:vertical;min-height:100px}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(220,38,38,.15)}
   .field select option{background:#1a1a1a}
   .contact-note{text-align:center;margin-top:22px;color:var(--grey-400);font-size:14.5px;max-width:560px;margin-left:auto;margin-right:auto}
   .contact-note a{color:#fca5a5;font-weight:600}
@@ -375,6 +376,10 @@
           <option>Not sure yet</option>
         </select>
       </div>
+    </div>
+    <div class="field">
+      <label>Have anything you want to add?</label>
+      <textarea name="Additional Notes" rows="4" placeholder="Tell us about your operation, preferred lanes, home base, or anything else you'd like us to know..."></textarea>
     </div>
     <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">Apply for Dispatch Services <span class="btn-arrow">→</span></button>
     <p id="formMsg" style="display:none;margin-top:18px;text-align:center;font-weight:600;color:#fca5a5"></p>
