@@ -96,6 +96,17 @@
   .motion-band h2{color:#fff;max-width:780px}
   .motion-band p{color:#e5e7eb;font-size:18px;max-width:620px;margin:0 auto}
 
+  /* --- DISPATCH TEASER --- */
+  .dispatch-teaser{background:linear-gradient(135deg,var(--grey-950) 0%,#1a0808 100%);color:#fff;position:relative;overflow:hidden}
+  .dispatch-teaser::before{content:"";position:absolute;top:-120px;right:-100px;width:420px;height:420px;background:radial-gradient(circle,rgba(220,38,38,.22),transparent 70%);border-radius:50%}
+  .dt-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;position:relative;z-index:1}
+  .dt-inner .eyebrow{background:rgba(220,38,38,.15);color:#fca5a5}
+  .dt-inner h2{color:#fff}
+  .dt-inner p{color:#d1d5db;font-size:16.5px;line-height:1.7;margin-bottom:26px}
+  .dt-visual{height:280px;border-radius:16px;background:linear-gradient(rgba(10,10,10,.25),rgba(220,38,38,.15)),url('carhauler.truckstop.webp') center/cover;box-shadow:0 24px 50px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08)}
+  .dt-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+  .dt-tag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#e5e7eb;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600}
+
   /* --- SECTION --- */
   section{padding:100px 24px;position:relative}
   .section-head{text-align:center;max-width:720px;margin:0 auto 60px}
@@ -222,6 +233,8 @@
     .gallery-item{height:240px}
     .motion-band{background-attachment:scroll}
     .trust{background-attachment:scroll}
+    .dt-inner{grid-template-columns:1fr}
+    .dt-visual{height:220px;order:-1}
     .about-img,.owner-visual{height:300px}
     .form-row{grid-template-columns:1fr}
     .apply-wrap{padding:30px}
@@ -463,6 +476,24 @@
       <h3>Get on the Road</h3>
       <p>Get matched with the right position, complete onboarding, and start your career with Glava Haul.</p>
     </div>
+  </div>
+</section>
+
+<!-- DISPATCH TEASER -->
+<section class="dispatch-teaser">
+  <div class="dt-inner">
+    <div class="reveal">
+      <div class="eyebrow">For Owner-Operators</div>
+      <h2>Already Have Your Own Truck?</h2>
+      <div class="dt-tags">
+        <span class="dt-tag">3–9 Car Haulers</span>
+        <span class="dt-tag">CDL &amp; Non-CDL</span>
+        <span class="dt-tag">Your MC or Ours</span>
+      </div>
+      <p>If you're running a 3–9 car hauler, Glava Haul Dispatch keeps you loaded, organized, and profitable. Our 24/7 team handles load booking, rate negotiation, and route planning — so you can focus on driving and growing your business.</p>
+      <a href="dispatch.html" class="btn btn-primary btn-lg">Explore Dispatch Services <span class="btn-arrow">→</span></a>
+    </div>
+    <div class="dt-visual reveal delay-1"></div>
   </div>
 </section>
 
